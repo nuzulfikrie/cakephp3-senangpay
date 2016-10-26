@@ -1,0 +1,27 @@
+{
+    "name": "paanblogger/cakephp3-senangpay",
+    "description": "Integration between Cakephp 3.x and Senangpay Payment Gateway",
+    "type": "cakephp-plugin",
+    "keywords" : ["cakephp", "libraries"],
+    "homepage": "https://github.com/paanblogger/cakephp3-senangpay",
+    "license": "MIT",
+    "require": {
+        "cakephp/cakephp": "~3.1"
+    },
+    "autoload": {
+	    "psr-4": {
+	        "Paanblogger\\Cakephp3Senangpay\\": "src"
+	    }
+	},
+	"autoload-dev": {
+	    "psr-4": {
+	        "Paanblogger\\Cakephp3Senangpay\\Test\\": "tests",
+	        "Cake\\Test\\" : "vendor/cakephp/cakephp/test"
+	    }
+	},
+	"config": {
+        "preferred-install": {
+            "*": "dist"
+        }
+    }
+}
