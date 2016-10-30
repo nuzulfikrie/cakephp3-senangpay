@@ -10,6 +10,7 @@ class Senangpay
 	protected $status_id;
 	protected $transaction_id;
 	protected $msg;
+	protected $hashed_string;
 	public function __construct(array $config = [])
 	{
 		$config = array_merge([
@@ -29,8 +30,8 @@ class Senangpay
 	}
 	private function receiveHash($status_id , $order_id , $transaction_id , $msg)
 	{
-		$hashed_string = md5($this->secret_key.urldecode($status_id).urldecode($order_id).urldecode($transaction_id).urldecode($msg));
-		return $hashed_string;
+		$this->hashed_string = md5($this->secret_key.urldecode($status_id).urldecode($order_id).urldecode($transaction_id).urldecode($msg));
+		return $this->hashed_string;
 	}
 	public function getOrderId()
 	{
@@ -47,6 +48,10 @@ class Senangpay
 	public function getMsg()
 	{
 		return $this->msg;
+	}
+	public function getHashString()
+	{
+		return $this->hashed_string;
 	}
 	public function checkReceiveHash(array $data = [])
 	{
